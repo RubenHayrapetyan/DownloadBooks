@@ -1,0 +1,13 @@
+<resources>
+  <string name="app_name">DownloadBooks</string>
+  <string name="btn_download_all">Download all</string>
+  <string name="hint_search">Search…</string>
+  <string name="btn_search">Search</string>
+  <string name="search_books">Search books</string>
+  <string name="favorites">Favorites</string>
+
+  <string name="error_something_went_wrong">Error. Something went wrong</string>
+  <string name="btn_retry">Retry</string>
+  <string name="loading_next_item">Loading next item …</string>
+  <string name="no_description">No description</string>">
+</resources>
