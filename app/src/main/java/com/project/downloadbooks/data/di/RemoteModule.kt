@@ -1,8 +1,8 @@
 package com.project.downloadbooks.data.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.project.downloadbooks.core.util.CoreConstants
 import com.project.downloadbooks.data.remote.BooksApiService
+import com.project.downloadbooks.data.util.DataConstants
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -25,7 +25,7 @@ val remoteModule = module {
     val contentType = "application/json".toMediaType()
     val networkJson = Json { ignoreUnknownKeys = true }
     Retrofit.Builder()
-      .baseUrl(CoreConstants.BASE_URL)
+      .baseUrl(DataConstants.BASE_URL)
       .addConverterFactory(networkJson.asConverterFactory(contentType))
       .client(get())
       .build()
