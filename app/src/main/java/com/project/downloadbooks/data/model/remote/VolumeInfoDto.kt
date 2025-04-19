@@ -1,14 +1,16 @@
 package com.project.downloadbooks.data.model.remote
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class VolumeInfoDto(
-  @field:Json(name = "title")
-  val title: String,
-  @field:Json(name = "authors")
-  val authors: List<String>?,
-  @field:Json(name = "description")
-  val description: String,
-  @field:Json(name = "imageLinks")
-  val imageLinksDto: ImageLinksDto?
+  @SerialName("title")
+  val title: String? = null,
+  @SerialName("authors")
+  val authors: List<String>? = null,
+  @SerialName("description")
+  val description: String? = null,
+  @SerialName("imageLinks")
+  val imageLinksDto: ImageLinksDto? = null
 )

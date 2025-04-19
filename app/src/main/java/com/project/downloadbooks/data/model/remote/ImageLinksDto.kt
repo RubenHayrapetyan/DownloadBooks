@@ -1,8 +1,10 @@
 package com.project.downloadbooks.data.model.remote
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ImageLinksDto(
-  @field:Json(name = "thumbnail")
-  val thumbnail: String
+  @SerialName("thumbnail")
+  val thumbnail: String? = null
 )

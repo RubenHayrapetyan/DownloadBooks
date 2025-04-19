@@ -5,6 +5,6 @@ import com.project.downloadbooks.domain.model.BookDomain
 import com.project.downloadbooks.domain.model.VolumeInfoDomain
 
 internal fun BookDto.toDomain() = BookDomain(
-  id = this.id,
+  id = this.id ?: "",
   volumeInfo = this.volumeInfo?.toDomain() ?: VolumeInfoDomain.emptyVolumeInfo
 )

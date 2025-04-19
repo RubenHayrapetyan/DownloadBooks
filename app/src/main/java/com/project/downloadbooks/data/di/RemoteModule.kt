@@ -1,11 +1,13 @@
 package com.project.downloadbooks.data.di
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.project.downloadbooks.core.util.CoreConstants
 import com.project.downloadbooks.data.remote.BooksApiService
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 val remoteModule = module {
@@ -20,9 +22,11 @@ val remoteModule = module {
   }
 
   single<Retrofit> {
+    val contentType = "application/json".toMediaType()
+    val networkJson = Json { ignoreUnknownKeys = true }
     Retrofit.Builder()
       .baseUrl(CoreConstants.BASE_URL)
-      .addConverterFactory(MoshiConverterFactory.create())
+      .addConverterFactory(networkJson.asConverterFactory(contentType))
       .client(get())
       .build()
   }
