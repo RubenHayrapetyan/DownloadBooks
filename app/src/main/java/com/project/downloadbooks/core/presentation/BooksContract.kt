@@ -3,7 +3,7 @@ package com.project.downloadbooks.core.presentation
 import androidx.paging.PagingData
 import com.project.downloadbooks.presentation.model.BookUi
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.flowOf
 
 class BooksContract {
   sealed interface BooksEvent {
@@ -17,7 +17,7 @@ class BooksContract {
   data class BooksState(
     val query: String = "",
     val savedQueries: List<String> = emptyList(),
-    val booksFlow: Flow<PagingData<BookUi>> = emptyFlow(),
+    val booksFlow: Flow<PagingData<BookUi>> = flowOf(PagingData.empty()),
     val favoriteBooks: List<BookUi> = emptyList(),
     val booksFromDb: List<BookUi> = emptyList(),
     val hasInternet: Boolean = false

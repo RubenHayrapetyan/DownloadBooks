@@ -10,9 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -40,9 +38,6 @@ internal fun SearchBooksScreen(
   navController: NavController,
   books: LazyPagingItems<BookUi>,
 ) {
-
-  val listState: LazyListState = rememberLazyListState()
-
   Column(
     modifier = Modifier
       .padding(horizontal = 16.dp)
@@ -84,7 +79,6 @@ internal fun SearchBooksScreen(
     Spacer(modifier = Modifier.height(8.dp))
 
     LazyColumn(
-      state = listState,
       modifier = Modifier.fillMaxSize(),
       verticalArrangement = Arrangement.spacedBy(16.dp),
       horizontalAlignment = Alignment.CenterHorizontally

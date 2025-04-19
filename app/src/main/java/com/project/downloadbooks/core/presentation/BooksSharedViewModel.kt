@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.project.downloadbooks.core.presentation.mapper.toBookModel
@@ -16,9 +15,6 @@ import com.project.downloadbooks.domain.usecase.GetSearchedQueriesUseCase
 import com.project.downloadbooks.domain.usecase.SaveQueryUseCase
 import com.project.downloadbooks.presentation.helper.ConnectivityObserver
 import com.project.downloadbooks.presentation.mapper.toUi
-import com.project.downloadbooks.presentation.model.BookUi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
@@ -89,8 +85,8 @@ class BooksSharedViewModel(
     )
 
     val booksFlow = getBooksFromApiUseCase(query.ifEmpty { "a" }) // a is default parameter
-      .cachedIn(viewModelScope)
       .map { it.map { it.toUi() } }
+      .cachedIn(viewModelScope)
 
     booksState = booksState.copy(booksFlow = booksFlow)
   }
